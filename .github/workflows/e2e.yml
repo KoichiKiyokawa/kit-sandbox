@@ -1,0 +1,20 @@
+name: Cypress Tests
+
+on: [push]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.5.0
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.10.0
+          run_install: args:[--frozen-lockfile]
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: pnpm run dev
