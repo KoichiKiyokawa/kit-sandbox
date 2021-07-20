@@ -1,5 +1,9 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+
 	import Accordion from '$lib/components/Accordion.svelte';
+	import { baseFetch } from '$lib/util/fetch';
+	import { onMount } from 'svelte';
 </script>
 
 <div class="container">
