@@ -7,7 +7,7 @@ export async function baseFetch<Body = Record<string, unknown>, Resp = void>(
 	try {
 		res = await fetch(`http://localhost:8080/${endpoint}`, {
 			headers: {
-				'Content-Type': 'application/json'
+				...(data && { 'Content-Type': 'application/json' })
 			},
 			method,
 			...(data && { body: JSON.stringify(data) }),

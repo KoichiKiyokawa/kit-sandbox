@@ -3,8 +3,10 @@
 	import { baseFetch } from '$lib/util/fetch';
 	import { onMount } from 'svelte';
 
-	function logout() {
-		baseFetch('auth/logout', 'POST').then(() => goto('/login'));
+	async function logout() {
+		const { error } = await baseFetch('auth/logout', 'POST');
+		if (error != null) return alert('failed to logout');
+		goto('/login');
 	}
 
 	let loading = true;
